@@ -1,5 +1,6 @@
 package com.admissioncrm.authenticationservice.Utilities;
 
+import com.admissioncrm.authenticationservice.Enums.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -7,22 +8,23 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
-
+@Service
 @Component
 public class JwtUtils {
     private Map<String,Object> claims = new HashMap<>();
 
-    private static final String SECRET_KEY = "Cf84sd4adewSsd45";
+    private static final String SECRET_KEY = "1f1dada12ecf13b34cba99d384dc943dfbcbcdb25e6e21fbd37aeedffbcf1c88";
 
-    public String generateToken(String mobileNumber) {
+    public String generateToken(String mobileNumber, Role role) {
 
-
+        claims.put("role",role);
         return Jwts.builder()
                 .claims().add(claims)
                 .subject(mobileNumber)
