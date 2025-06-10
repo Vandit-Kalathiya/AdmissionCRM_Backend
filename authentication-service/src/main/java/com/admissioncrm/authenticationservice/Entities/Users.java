@@ -4,17 +4,16 @@ import com.admissioncrm.authenticationservice.Enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
-import org.springframework.security.web.csrf.CsrfTokenRepository;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
+
 @Data
 @Entity
-public class User {
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-    private String username;
+//    private String username; removed for now because we are using mobile number as username
     private String password;
     private String firstName;
     private String lastName;

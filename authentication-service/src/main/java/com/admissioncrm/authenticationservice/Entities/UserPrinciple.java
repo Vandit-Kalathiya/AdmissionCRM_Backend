@@ -10,7 +10,7 @@ import java.util.List;
 
 public class UserPrinciple implements UserDetails {
 
-    private User user;
+    private Users user;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singleton(new SimpleGrantedAuthority(user.getRole().toString()));
@@ -23,6 +23,6 @@ public class UserPrinciple implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return user.getMobileNumber();
     }
 }
