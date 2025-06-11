@@ -1,20 +1,26 @@
 package com.admissioncrm.authenticationservice.Entities;
 
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-
+@Data
 public class UserPrinciple implements UserDetails {
+
+    public UserPrinciple(Users user){
+        this.user = user;
+    }
 
     private Users user;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority(user.getRole().toString()));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole().name()));
     }
+
+
 
     @Override
     public String getPassword() {
@@ -23,6 +29,9 @@ public class UserPrinciple implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getMobileNumber();
+        switch (user.getRole()) {
+            case STUDENT: return user.getMobileNumber();
+            default: return user.getEmail();
+        }
     }
 }

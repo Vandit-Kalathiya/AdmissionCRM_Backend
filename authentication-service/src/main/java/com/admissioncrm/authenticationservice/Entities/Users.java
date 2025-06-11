@@ -17,9 +17,9 @@ public class Users {
     private String password;
     private String firstName;
     private String lastName;
-
+    @Column(unique = true)
     private String email;
-
+    @Column(unique = true)
     @Pattern(regexp = "^[0-9]{10}$", message = "Invalid mobile number")
     private String mobileNumber;
 
@@ -29,7 +29,4 @@ public class Users {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public String getRole() {
-        return role.toString();
-    }
 }
