@@ -33,18 +33,18 @@ public class JwtFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String authHeader =request.getHeader("Authorization");
         String token=null;
-        String mobileNumber=null;
+        String username=null;
 
         if(authHeader !=null && authHeader.startsWith("Bearer ")){
             token = authHeader.substring(7);
             try {
-                mobileNumber = jwtUtils.extractUserName(token);
+                username = jwtUtils.extractUserName(token);
             }catch (Exception e){
                 logger.warn("Error extracting username from token");
             }
         }
-        if (mobileNumber != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = userDetailsService.loadUserByUsername(mobileNumber);
+        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
             if (jwtUtils.validateToken(token, userDetails)) {
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 authToken.setDetails(new WebAuthenticationDetailsSource()

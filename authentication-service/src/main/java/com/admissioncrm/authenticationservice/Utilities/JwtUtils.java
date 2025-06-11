@@ -22,12 +22,12 @@ public class JwtUtils {
 
     private static final String SECRET_KEY = "1f1dada12ecf13b34cba99d384dc943dfbcbcdb25e6e21fbd37aeedffbcf1c88";
 
-    public String generateToken(String mobileNumber, Role role) {
+    public String generateToken(String username, Role role) {
 
         claims.put("role",role);
         return Jwts.builder()
                 .claims().add(claims)
-                .subject(mobileNumber)
+                .subject(username)
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis()+ (60 * 60 * 60) ))
                 .and()
