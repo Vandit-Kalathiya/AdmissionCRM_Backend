@@ -46,12 +46,10 @@ public class Intake {
     @Column(name = "is_active")
     private Boolean isActive = true;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "institution_id")
-    private Institution institution;
+    private String institutionId;
 
-    @OneToMany(mappedBy = "intake", cascade = CascadeType.ALL)
-    private List<Application> applications = new ArrayList<>();
+    @CollectionTable
+    private List<String> applications = new ArrayList<>();
 
     @CreationTimestamp
     @Column(name = "created_at")

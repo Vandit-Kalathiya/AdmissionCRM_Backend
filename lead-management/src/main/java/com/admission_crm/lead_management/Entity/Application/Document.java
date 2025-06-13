@@ -20,9 +20,7 @@ public class Document {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "application_id", nullable = false)
-    private Application application;
+    private String applicationId;
 
     @Column(name = "document_type", nullable = false, length = 50)
     private String documentType; // TRANSCRIPT, CERTIFICATE, ID_PROOF, etc.
@@ -48,13 +46,9 @@ public class Document {
     @Column(name = "verification_notes", columnDefinition = "TEXT")
     private String verificationNotes;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "uploaded_by")
-    private User uploadedBy;
+    private String uploadedBy;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "verified_by")
-    private User verifiedBy;
+    private String verifiedBy;
 
     @Column(name = "verification_date")
     private LocalDateTime verificationDate;

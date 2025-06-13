@@ -21,13 +21,9 @@ public class Communication {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "lead_id", nullable = false)
-    private Lead lead;
+    private String leadId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private String userId;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -51,9 +47,7 @@ public class Communication {
     @Column(columnDefinition = "JSON")
     private String attachments;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "template_id")
-    private CommunicationTemplate template;
+    private String communicationTemplate;
 
     @CreationTimestamp
     @Column(name = "created_at")

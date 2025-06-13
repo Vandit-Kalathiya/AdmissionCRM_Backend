@@ -43,13 +43,9 @@ public class Course {
     @Column(columnDefinition = "TEXT")
     private String eligibility;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "institution_id")
-    private Institution institution;
+    private String institutionId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "department_id")
-    private Department department;
+    private String departmentId;
 
     @Column(name = "is_active")
     private Boolean isActive = true;
@@ -57,11 +53,11 @@ public class Course {
     @Column(name = "brochure_url", length = 255)
     private String brochureUrl;
 
-    @OneToMany(mappedBy = "courseInterest", cascade = CascadeType.ALL)
-    private List<Lead> interestedLeads = new ArrayList<>();
+    @CollectionTable
+    private List<String> interestedLeads = new ArrayList<>();
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
-    private List<Application> applications = new ArrayList<>();
+    @CollectionTable
+    private List<String> applications = new ArrayList<>();
 
     @CreationTimestamp
     @Column(name = "created_at")

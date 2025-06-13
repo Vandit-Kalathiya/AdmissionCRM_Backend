@@ -4,7 +4,7 @@ import com.admissioncrm.authenticationservice.DTO.Jwt.JwtResponse;
 import com.admissioncrm.authenticationservice.DTO.student.StudentLoginRequest;
 import com.admissioncrm.authenticationservice.DTO.student.StudentRegistrationRequest;
 import com.admissioncrm.authenticationservice.DTO.loginRequestViaEmail;
-import com.admissioncrm.authenticationservice.Entities.Users;
+import com.admissioncrm.authenticationservice.Entities.User;
 import com.admissioncrm.authenticationservice.Enums.Role;
 import com.admissioncrm.authenticationservice.ExceptionHandling.ApiException;
 import com.admissioncrm.authenticationservice.Repositories.UserRepository;
@@ -35,7 +35,7 @@ public class AuthenticationService {
             if (userRepository.existsByMobileNumber(request.getMobileNumber())) {
                 throw new ApiException("Mobile number already registered");
             }
-            Users user = new Users();
+            User user = new User();
             user.setMobileNumber(request.getMobileNumber());
             user.setFirstName(request.getFirstName());
             user.setLastName(request.getLastName());
@@ -60,7 +60,7 @@ public class AuthenticationService {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(request.getMobileNumber(), request.getPassword())
             );
-            Users user=userRepository.findByMobileNumber(request.getMobileNumber())
+            User user=userRepository.findByMobileNumber(request.getMobileNumber())
                     .orElseThrow(() -> new ApiException("User not found"));
             if (user.getRole() != Role.STUDENT) {
                 throw new ApiException("Access denied: Not a student");
@@ -92,7 +92,7 @@ public class AuthenticationService {
                     new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
             );
 
-            Users user = userRepository.findByEmail(request.getEmail())
+            User user = userRepository.findByEmail(request.getEmail())
                     .orElseThrow(() -> new ApiException("User not found"));
 
             if (user.getRole() != expectedRole) {

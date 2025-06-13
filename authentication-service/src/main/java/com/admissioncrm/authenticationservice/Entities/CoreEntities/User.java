@@ -1,4 +1,5 @@
-package com.admission_crm.lead_management.Entity.CoreEntities;
+package com.admissioncrm.authenticationservice.Entities.CoreEntities;
+
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -46,9 +47,13 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role = Role.STUDENT;
 
+    @JoinColumn(name = "university_id")
     private String universityId;
+
+    @JoinColumn(name = "institution_id")
     private String institutionId;
 
+//    @OneToMany(mappedBy = "assignedCounselor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @CollectionTable(name = "assigned_leads", joinColumns = @JoinColumn(name = "user_id"))
     private List<String> assignedLeads = new ArrayList<>();
 

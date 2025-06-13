@@ -10,7 +10,7 @@ public class StudentDetails {
     @OneToOne
     @MapsId
     @JoinColumn(name = "id") // same ID as Users table
-    private Users user;
+    private User user;
 
     private String preferredCourse;
     private String educationLevel;

@@ -19,13 +19,9 @@ public class LeadActivity {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "lead_id", nullable = false)
-    private Lead lead;
+    private String leadId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private String userId;
 
     @Column(name = "activity_type", nullable = false, length = 50)
     private String activityType;

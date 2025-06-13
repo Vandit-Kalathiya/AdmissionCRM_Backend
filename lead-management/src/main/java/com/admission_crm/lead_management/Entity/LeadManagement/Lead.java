@@ -5,7 +5,7 @@ import com.admission_crm.lead_management.Entity.Application.Application;
 import com.admission_crm.lead_management.Entity.Communication.Communication;
 import com.admission_crm.lead_management.Entity.CoreEntities.Institution;
 import com.admission_crm.lead_management.Entity.CoreEntities.User;
-import com.admission_crm.lead_management.Entity.FollowUp.FollowUp;
+import com.admission_crm.lead_management.Entity.FollowUp.LeadFollowUp;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -64,17 +64,13 @@ public class Lead {
     @Column(length = 10)
     private String pinCode;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "institution_id", nullable = false)
-    private Institution institution;
+    private String institutionId;
 
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "lead_source_id")
 //    private LeadSource leadSource;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "assigned_counselor_id")
-    private User assignedCounselor;
+    private String assignedCounselor;
 
     private LeadStatus status;
     private Integer leadScore;
@@ -85,9 +81,7 @@ public class Lead {
     @Column(length = 100)
     private String qualification;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_interest_id")
-    private Course courseInterest;
+    private String courseInterest;
 
     @Column(name = "budget_range", length = 50)
     private String budgetRange;
@@ -104,17 +98,17 @@ public class Lead {
     @Column(name = "custom_fields", columnDefinition = "JSON")
     private String customFields;
 
-    @OneToMany(mappedBy = "lead", cascade = CascadeType.ALL)
-    private List<Communication> communications = new ArrayList<>();
+    @CollectionTable
+    private List<String> communications = new ArrayList<>();
 
-    @OneToMany(mappedBy = "lead", cascade = CascadeType.ALL)
-    private List<FollowUp> followUps = new ArrayList<>();
+    @CollectionTable
+    private List<String> followUps = new ArrayList<>();
 
-    @OneToMany(mappedBy = "lead", cascade = CascadeType.ALL)
-    private List<Application> applications = new ArrayList<>();
+    @CollectionTable
+    private List<String> applications = new ArrayList<>();
 
-    @OneToMany(mappedBy = "lead", cascade = CascadeType.ALL)
-    private List<LeadActivity> activities = new ArrayList<>();
+    @CollectionTable
+    private List<String> activities = new ArrayList<>();
 
     @CreationTimestamp
     @Column(name = "created_at")

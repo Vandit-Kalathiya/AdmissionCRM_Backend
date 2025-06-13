@@ -1,7 +1,7 @@
 package com.admissioncrm.authenticationservice.Config;
 
 
-import com.admissioncrm.authenticationservice.Entities.Users;
+import com.admissioncrm.authenticationservice.Entities.User;
 import com.admissioncrm.authenticationservice.Enums.Role;
 import com.admissioncrm.authenticationservice.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class SuperAdminInitializer {
             // Check if already exists
             boolean exists = userRepository.existsByMobileNumber(superAdminMobile);
             if (!exists) {
-                Users superAdmin = new Users();
+                User superAdmin = new User();
                 superAdmin.setFirstName("Super");
                 superAdmin.setLastName("Admin");
                 superAdmin.setMobileNumber(superAdminMobile);

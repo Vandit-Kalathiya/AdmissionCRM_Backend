@@ -21,9 +21,7 @@ public class Notification {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private String userId;
 
     @Column(nullable = false, length = 255)
     private String title;

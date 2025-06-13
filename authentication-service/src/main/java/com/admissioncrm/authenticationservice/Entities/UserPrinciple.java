@@ -7,19 +7,20 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+
 @Data
 public class UserPrinciple implements UserDetails {
 
-    public UserPrinciple(Users user){
+    public UserPrinciple(User user) {
         this.user = user;
     }
 
-    private Users user;
+    private User user;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole().name()));
     }
-
 
 
     @Override
@@ -30,8 +31,10 @@ public class UserPrinciple implements UserDetails {
     @Override
     public String getUsername() {
         switch (user.getRole()) {
-            case STUDENT: return user.getMobileNumber();
-            default: return user.getEmail();
+            case STUDENT:
+                return user.getMobileNumber();
+            default:
+                return user.getEmail();
         }
     }
 }

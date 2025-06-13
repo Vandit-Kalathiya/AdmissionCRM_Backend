@@ -10,7 +10,7 @@ public class InstituteAdminDetails {
     @OneToOne
     @MapsId
     @JoinColumn(name = "id")
-    private Users user;
+    private User user;
 
     private int institute;//we can store pk of institute table from another microservice
 

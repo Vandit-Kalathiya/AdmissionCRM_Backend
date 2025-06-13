@@ -19,9 +19,7 @@ public class LeadScore {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "lead_id", nullable = false)
-    private Lead lead;
+    private String leadId;
 
     @Column(name = "total_score")
     private Integer totalScore;

@@ -33,19 +33,15 @@ public class Department {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "institution_id")
-    private Institution institution;
+    private String institutionId;
 
-    @OneToOne
-    @JoinColumn(name = "head_of_department_id")
-    private User headOfDepartment;
+    private String headOfDepartment;
 
     @Column(name = "is_active")
     private Boolean isActive = true;
 
-    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
-    private List<Course> courses = new ArrayList<>();
+    @CollectionTable
+    private List<String> courses = new ArrayList<>();
 
     @CreationTimestamp
     @Column(name = "created_at")

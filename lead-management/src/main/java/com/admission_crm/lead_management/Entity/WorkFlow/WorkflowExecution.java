@@ -25,17 +25,11 @@ public class WorkflowExecution {
     @Column(name = "workflow_type", nullable = false, length = 50)
     private String workflowType;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "lead_id")
-    private Lead lead;
+    private String leadId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "application_id")
-    private Application application;
+    private String applicationId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "triggered_by")
-    private User triggeredBy;
+    private String triggeredBy;
 
     @Enumerated(EnumType.STRING)
     private WorkflowStatus status;

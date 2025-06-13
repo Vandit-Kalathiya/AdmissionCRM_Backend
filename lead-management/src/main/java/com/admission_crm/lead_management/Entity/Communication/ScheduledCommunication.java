@@ -21,17 +21,13 @@ public class ScheduledCommunication {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "lead_id", nullable = false)
-    private Lead lead;
+    private String leadId;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Communication.CommunicationType type;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "template_id")
-    private CommunicationTemplate template;
+    private String communicationTemplate;
 
     @Column(name = "scheduled_time", nullable = false)
     private LocalDateTime scheduledTime;
@@ -48,16 +44,12 @@ public class ScheduledCommunication {
     @Column(name = "custom_content", columnDefinition = "TEXT")
     private String customContent;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "created_by")
-    private User createdBy;
+    private String createdBy;
 
     @Column(name = "sent_at")
     private LocalDateTime sentAt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "communication_id")
-    private Communication sentCommunication;
+    private String sentCommunicationId;
 
     @Column(name = "error_message", columnDefinition = "TEXT")
     private String errorMessage;

@@ -10,7 +10,7 @@ public class UniversityAdminDetails {
     @OneToOne
     @MapsId
     @JoinColumn(name = "id")
-    private Users user;
+    private User user;
 
     private boolean superAdmin; // example field
 

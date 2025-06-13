@@ -25,9 +25,7 @@ public class ConversionFunnel {
 //    @JoinColumn(name = "lead_source_id")
 //    private LeadSource leadSource;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "institution_id")
-    private Institution institution;
+    private String institutionId;
 
     @Column(name = "stage_from", length = 50)
     private String stageFrom;

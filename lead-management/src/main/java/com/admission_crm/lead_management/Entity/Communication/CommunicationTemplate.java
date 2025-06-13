@@ -42,16 +42,12 @@ public class CommunicationTemplate {
     @Column(name = "is_active")
     private Boolean isActive = true;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "created_by")
-    private User createdBy;
+    private String createdBy;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "institution_id")
-    private Institution institution;
+    private String institutionId;
 
-    @OneToMany(mappedBy = "template", cascade = CascadeType.ALL)
-    private List<Communication> communications = new ArrayList<>();
+    @CollectionTable
+    private List<String> communications = new ArrayList<>();
 
     @CreationTimestamp
     @Column(name = "created_at")

@@ -1,4 +1,4 @@
-package com.admission_crm.lead_management.Entity.CoreEntities;
+package com.admissioncrm.authenticationservice.Entities.CoreEntities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -41,11 +41,11 @@ public class University {
     @Column(name = "logo_url", length = 255)
     private String logoUrl;
 
-    @CollectionTable
-    private List<String> admins = new ArrayList<>();
+    @OneToMany(mappedBy = "university",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<User> admins = new ArrayList<>();
 
-    @CollectionTable
-    private List<String> institutions = new ArrayList<>();
+    @OneToMany(mappedBy = "university", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Institution> institutions = new ArrayList<>();
 
     @CreationTimestamp
     @Column(name = "created_at")

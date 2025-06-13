@@ -10,7 +10,7 @@ public class CounsellorDetails {
     @OneToOne
     @MapsId
     @JoinColumn(name = "id")
-    private Users user;
+    private User user;
 
     private String assignedInstitute;
     private String expertiseArea;

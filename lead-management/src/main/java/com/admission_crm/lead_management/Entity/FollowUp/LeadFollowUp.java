@@ -12,22 +12,18 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "follow_ups")
+@Table(name = "lead_follow_ups")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class FollowUp {
+public class LeadFollowUp {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "lead_id", nullable = false)
-    private Lead lead;
+    private String leadId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "assigned_to", nullable = false)
-    private User assignedTo;
+    private String assignedTo;
 
     @Column(name = "follow_up_date", nullable = false)
     private LocalDateTime followUpDate;
@@ -52,9 +48,7 @@ public class FollowUp {
     @Column(name = "next_follow_up_date")
     private LocalDateTime nextFollowUpDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "created_by")
-    private User createdBy;
+    private String createdBy;
 
     @CreationTimestamp
     @Column(name = "created_at")

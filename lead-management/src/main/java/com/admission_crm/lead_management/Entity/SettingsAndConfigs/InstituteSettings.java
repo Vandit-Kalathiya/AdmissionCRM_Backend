@@ -21,9 +21,7 @@ public class InstituteSettings {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "institute_id", nullable = false)
-    private Institution institute;
+    private String institutionId;
 
     @Column(name = "lead_auto_assignment")
     private Boolean leadAutoAssignment = true;

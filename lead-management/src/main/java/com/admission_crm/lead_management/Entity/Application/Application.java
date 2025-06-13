@@ -2,6 +2,8 @@ package com.admission_crm.lead_management.Entity.Application;
 
 import com.admission_crm.lead_management.Entity.Academic.Course;
 import com.admission_crm.lead_management.Entity.Academic.Intake;
+import com.admission_crm.lead_management.Entity.FollowUp.ApplicationFollowUp;
+import com.admission_crm.lead_management.Entity.FollowUp.LeadFollowUp;
 import com.admission_crm.lead_management.Entity.LeadManagement.Lead;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,20 +27,17 @@ public class Application {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "lead_id", nullable = false)
-    private Lead lead;
+    private String leadId;
 
     @Column(name = "application_number", unique = true, length = 20)
     private String applicationNumber;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id", nullable = false)
-    private Course course;
+    private String courseId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "intake_id", nullable = false)
-    private Intake intake;
+    private String intakeId;
+
+    @CollectionTable
+    private List<String> followUps = new ArrayList<>();
 
     private ApplicationStatus applicationStatus;
 
@@ -70,8 +69,8 @@ public class Application {
     @Column(name = "payment_status")
     private PaymentStatus paymentStatus;
 
-    @OneToMany(mappedBy = "application", cascade = CascadeType.ALL)
-    private List<Document> uploadedDocuments = new ArrayList<>();
+    @CollectionTable
+    private List<String> uploadedDocuments = new ArrayList<>();
 
     @CreationTimestamp
     @Column(name = "created_at")

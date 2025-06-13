@@ -1,6 +1,7 @@
-package com.admission_crm.lead_management.Entity.CoreEntities;
+package com.admissioncrm.authenticationservice.Entities.CoreEntities;
 
 import com.admission_crm.lead_management.Entity.Academic.Course;
+import com.admission_crm.lead_management.Entity.CoreEntities.University;
 import com.admission_crm.lead_management.Entity.LeadManagement.Lead;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -43,10 +44,13 @@ public class Institution {
     @Column(name = "logo_url")
     private String logoUrl;
 
-    private String universityId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "university_id")
+    private University university;
 
-    @CollectionTable
-    private List<String> instituteAdmin = new ArrayList<>();
+    @OneToMany(mappedBy = "institution",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "institute_admin_id")
+    private List<User> instituteAdmin;
 
     @Column(name = "max_counselors")
     private Integer maxCounselors = 5;
@@ -57,14 +61,14 @@ public class Institution {
     @Column(name = "is_active")
     private Boolean isActive = true;
 
-    @CollectionTable
-    private List<String> counselors = new ArrayList<>();
+    @OneToMany(mappedBy = "institution", cascade = CascadeType.ALL)
+    private List<User> counselors = new ArrayList<>();
 
-    @CollectionTable
-    private List<String> courses = new ArrayList<>();
+    @OneToMany(mappedBy = "institution", cascade = CascadeType.ALL)
+    private List<Course> courses = new ArrayList<>();
 
-    @CollectionTable
-    private List<String> leads = new ArrayList<>();
+    @OneToMany(mappedBy = "institution", cascade = CascadeType.ALL)
+    private List<Lead> leads = new ArrayList<>();
 
     @CreationTimestamp
     @Column(name = "created_at")
