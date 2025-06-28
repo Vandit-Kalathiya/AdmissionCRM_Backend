@@ -41,11 +41,9 @@ public class University {
     @Column(name = "logo_url", length = 255)
     private String logoUrl;
 
-    @OneToMany(mappedBy = "university",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<User> admins = new ArrayList<>();
+    private List<String> admins = new ArrayList<>();
 
-    @OneToMany(mappedBy = "university", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Institution> institutions = new ArrayList<>();
+    private List<String> institutions = new ArrayList<>();
 
     @CreationTimestamp
     @Column(name = "created_at")

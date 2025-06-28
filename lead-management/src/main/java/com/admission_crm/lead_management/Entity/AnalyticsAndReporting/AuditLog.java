@@ -1,7 +1,5 @@
 package com.admission_crm.lead_management.Entity.AnalyticsAndReporting;
 
-
-import com.admission_crm.lead_management.Entity.CoreEntities.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,8 +8,8 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "audit_logs")
+@Entity(name = "system_logs")
+@Table(name = "logs")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,10 +23,10 @@ public class AuditLog {
     @Column(name = "action", nullable = false, length = 100)
     private String action;
 
-    @Column(name = "entity_type", length = 50)
+    // Fix: Remove the @Column annotation since Hibernate will automatically
+    // map entityType to entity_type with snake_case naming strategy
     private String entityType;
 
-    @Column(name = "entity_id")
     private String entityId;
 
     @Column(name = "old_value", columnDefinition = "TEXT")

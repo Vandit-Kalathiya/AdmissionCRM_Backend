@@ -18,10 +18,11 @@ import java.security.Principal;
 @RequestMapping("/auth")
 @RestController
 public class AuthController {
+
     AuthenticationService authenticationService;
+
     AuthController(AuthenticationService authenticationService){
         this.authenticationService = authenticationService;
-
     }
 
     @PostMapping("/student/login")
@@ -33,8 +34,8 @@ public class AuthController {
     @PostMapping("/student/register")
     public ResponseEntity<?> registerStudent(@Valid  @RequestBody StudentRegistrationRequest request)
     {
-        //cheak exception handeling in this method
-       JwtResponse jwtResponse=authenticationService.registerStudent(request);
+        // Check exception handling in this method
+        JwtResponse jwtResponse=authenticationService.registerStudent(request);
 
             return ResponseEntity.ok(jwtResponse);
     }

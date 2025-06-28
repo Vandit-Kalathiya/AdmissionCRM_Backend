@@ -40,7 +40,7 @@ public class Department {
     @Column(name = "is_active")
     private Boolean isActive = true;
 
-    @CollectionTable
+    @ElementCollection
     private List<String> courses = new ArrayList<>();
 
     @CreationTimestamp

@@ -1,8 +1,7 @@
 package com.admissioncrm.authenticationservice.Entities.CoreEntities;
 
-import com.admission_crm.lead_management.Entity.Academic.Course;
-import com.admission_crm.lead_management.Entity.CoreEntities.University;
-import com.admission_crm.lead_management.Entity.LeadManagement.Lead;
+import com.admissioncrm.authenticationservice.DTO.CourseDTO;
+import com.admissioncrm.authenticationservice.DTO.LeadDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -44,13 +43,9 @@ public class Institution {
     @Column(name = "logo_url")
     private String logoUrl;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "university_id")
-    private University university;
+    private String universityId;
 
-    @OneToMany(mappedBy = "institution",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "institute_admin_id")
-    private List<User> instituteAdmin;
+    private List<String> instituteAdminIds;
 
     @Column(name = "max_counselors")
     private Integer maxCounselors = 5;
@@ -61,14 +56,11 @@ public class Institution {
     @Column(name = "is_active")
     private Boolean isActive = true;
 
-    @OneToMany(mappedBy = "institution", cascade = CascadeType.ALL)
-    private List<User> counselors = new ArrayList<>();
+    private List<String> counselors = new ArrayList<>();
 
-    @OneToMany(mappedBy = "institution", cascade = CascadeType.ALL)
-    private List<Course> courses = new ArrayList<>();
+    private List<String> courses = new ArrayList<>();
 
-    @OneToMany(mappedBy = "institution", cascade = CascadeType.ALL)
-    private List<Lead> leads = new ArrayList<>();
+    private List<String> leads = new ArrayList<>();
 
     @CreationTimestamp
     @Column(name = "created_at")

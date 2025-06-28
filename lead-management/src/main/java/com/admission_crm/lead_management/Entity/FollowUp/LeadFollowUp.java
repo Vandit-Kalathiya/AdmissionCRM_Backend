@@ -17,15 +17,16 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LeadFollowUp {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
+    @Column(name = "lead_id")
     private String leadId;
 
     private String assignedTo;
 
-    @Column(name = "follow_up_date", nullable = false)
     private LocalDateTime followUpDate;
 
     @Enumerated(EnumType.STRING)
@@ -45,17 +46,14 @@ public class LeadFollowUp {
     @Column(columnDefinition = "TEXT")
     private String outcome;
 
-    @Column(name = "next_follow_up_date")
     private LocalDateTime nextFollowUpDate;
 
     private String createdBy;
 
     @CreationTimestamp
-    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
-    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
     public enum FollowUpType {

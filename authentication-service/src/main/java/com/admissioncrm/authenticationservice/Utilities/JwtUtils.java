@@ -1,6 +1,6 @@
 package com.admissioncrm.authenticationservice.Utilities;
 
-import com.admissioncrm.authenticationservice.Enums.Role;
+import com.admissioncrm.authenticationservice.Entities.CoreEntities.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;

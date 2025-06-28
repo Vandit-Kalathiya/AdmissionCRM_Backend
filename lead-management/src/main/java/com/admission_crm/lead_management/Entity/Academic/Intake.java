@@ -48,7 +48,7 @@ public class Intake {
 
     private String institutionId;
 
-    @CollectionTable
+    @ElementCollection
     private List<String> applications = new ArrayList<>();
 
     @CreationTimestamp

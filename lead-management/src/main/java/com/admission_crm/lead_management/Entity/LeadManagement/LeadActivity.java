@@ -19,6 +19,7 @@ public class LeadActivity {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
+    @Column(name = "lead_id")
     private String leadId;
 
     private String userId;

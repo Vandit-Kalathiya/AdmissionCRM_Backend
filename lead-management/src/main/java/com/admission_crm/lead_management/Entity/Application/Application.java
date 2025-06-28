@@ -69,7 +69,7 @@ public class Application {
     @Column(name = "payment_status")
     private PaymentStatus paymentStatus;
 
-    @CollectionTable
+    @ElementCollection
     private List<String> uploadedDocuments = new ArrayList<>();
 
     @CreationTimestamp

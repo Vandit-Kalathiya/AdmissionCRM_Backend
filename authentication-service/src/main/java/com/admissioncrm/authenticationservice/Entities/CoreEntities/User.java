@@ -1,6 +1,5 @@
 package com.admissioncrm.authenticationservice.Entities.CoreEntities;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,7 +20,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User implements UserDetails {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
@@ -47,13 +46,10 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role = Role.STUDENT;
 
-    @JoinColumn(name = "university_id")
     private String universityId;
 
-    @JoinColumn(name = "institution_id")
     private String institutionId;
 
-//    @OneToMany(mappedBy = "assignedCounselor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @CollectionTable(name = "assigned_leads", joinColumns = @JoinColumn(name = "user_id"))
     private List<String> assignedLeads = new ArrayList<>();
 
@@ -96,10 +92,5 @@ public class User implements UserDetails {
 
     public String getFullName() {
         return firstName + " " + lastName;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 }

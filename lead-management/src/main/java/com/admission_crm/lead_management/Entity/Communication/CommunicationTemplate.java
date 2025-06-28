@@ -46,7 +46,7 @@ public class CommunicationTemplate {
 
     private String institutionId;
 
-    @CollectionTable
+    @ElementCollection
     private List<String> communications = new ArrayList<>();
 
     @CreationTimestamp

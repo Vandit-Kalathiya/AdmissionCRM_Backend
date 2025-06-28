@@ -1,8 +1,5 @@
 package com.admission_crm.lead_management.Entity.Academic;
 
-import com.admission_crm.lead_management.Entity.Application.Application;
-import com.admission_crm.lead_management.Entity.CoreEntities.Institution;
-import com.admission_crm.lead_management.Entity.LeadManagement.Lead;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Course {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
@@ -53,10 +51,10 @@ public class Course {
     @Column(name = "brochure_url", length = 255)
     private String brochureUrl;
 
-    @CollectionTable
+    @ElementCollection
     private List<String> interestedLeads = new ArrayList<>();
 
-    @CollectionTable
+    @ElementCollection
     private List<String> applications = new ArrayList<>();
 
     @CreationTimestamp

@@ -1,5 +1,6 @@
 package com.admissioncrm.authenticationservice.Entities;
 
+import com.admissioncrm.authenticationservice.Entities.CoreEntities.User;
 import jakarta.persistence.*;
 
 @Entity

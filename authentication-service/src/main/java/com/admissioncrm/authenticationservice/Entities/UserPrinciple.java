@@ -1,5 +1,6 @@
 package com.admissioncrm.authenticationservice.Entities;
 
+import com.admissioncrm.authenticationservice.Entities.CoreEntities.User;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -32,7 +33,7 @@ public class UserPrinciple implements UserDetails {
     public String getUsername() {
         switch (user.getRole()) {
             case STUDENT:
-                return user.getMobileNumber();
+                return user.getPhone();
             default:
                 return user.getEmail();
         }

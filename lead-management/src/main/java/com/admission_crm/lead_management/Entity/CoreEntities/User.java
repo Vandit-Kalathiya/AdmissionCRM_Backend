@@ -20,7 +20,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User implements UserDetails {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
@@ -47,9 +47,10 @@ public class User implements UserDetails {
     private Role role = Role.STUDENT;
 
     private String universityId;
+
     private String institutionId;
 
-    @CollectionTable(name = "assigned_leads", joinColumns = @JoinColumn(name = "user_id"))
+    @ElementCollection
     private List<String> assignedLeads = new ArrayList<>();
 
     @Column(name = "max_leads_assignment")
@@ -91,10 +92,5 @@ public class User implements UserDetails {
 
     public String getFullName() {
         return firstName + " " + lastName;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 }

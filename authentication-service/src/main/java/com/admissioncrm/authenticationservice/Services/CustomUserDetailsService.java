@@ -1,6 +1,6 @@
 package com.admissioncrm.authenticationservice.Services;
 
-import com.admissioncrm.authenticationservice.Entities.User;
+import com.admissioncrm.authenticationservice.Entities.CoreEntities.User;
 import com.admissioncrm.authenticationservice.Entities.UserPrinciple;
 import com.admissioncrm.authenticationservice.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> userOpt = userRepository.findByEmail(username);
         if (userOpt.isEmpty()) {
-            userOpt = userRepository.findByMobileNumber(username);
+            userOpt = userRepository.findByPhone(username);
         }
         User user = userOpt.orElseThrow(() -> new UsernameNotFoundException("User not found"));
         return new UserPrinciple(user);

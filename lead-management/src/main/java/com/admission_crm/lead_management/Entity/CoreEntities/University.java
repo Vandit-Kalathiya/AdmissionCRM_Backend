@@ -24,9 +24,6 @@ public class University {
     @Column(nullable = false, length = 100)
     private String name;
 
-    @Column(unique = true, nullable = false, length = 20)
-    private String code;
-
     @Column(columnDefinition = "TEXT")
     private String address;
 
@@ -41,10 +38,10 @@ public class University {
     @Column(name = "logo_url", length = 255)
     private String logoUrl;
 
-    @CollectionTable
+    @ElementCollection
     private List<String> admins = new ArrayList<>();
 
-    @CollectionTable
+    @ElementCollection
     private List<String> institutions = new ArrayList<>();
 
     @CreationTimestamp
