@@ -1,6 +1,7 @@
 package com.admission_crm.lead_management.Service;
 
 import com.admission_crm.lead_management.Entity.CoreEntities.Institution;
+import com.admission_crm.lead_management.Entity.CoreEntities.University;
 import com.admission_crm.lead_management.Exception.DuplicateLeadException;
 import com.admission_crm.lead_management.Exception.ResourceNotFoundException;
 import com.admission_crm.lead_management.Payload.EntityMapper;
@@ -8,6 +9,7 @@ import com.admission_crm.lead_management.Payload.Request.InstitutionCreateReques
 import com.admission_crm.lead_management.Payload.Request.InstitutionUpdateRequest;
 import com.admission_crm.lead_management.Payload.Response.InstitutionResponseDTO;
 import com.admission_crm.lead_management.Repository.InstitutionRepository;
+import com.admission_crm.lead_management.Repository.UniversityRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -27,6 +29,7 @@ public class InstitutionService {
 
     private final InstitutionRepository institutionRepository;
     private final EntityMapper entityMapper;
+    private final UniversityRepository universityRepository;
 
     public InstitutionResponseDTO createInstitution(InstitutionCreateRequest createDTO) {
         try {
@@ -40,6 +43,11 @@ public class InstitutionService {
 
             Institution institution = entityMapper.toEntity(createDTO);
             Institution savedInstitution = institutionRepository.save(institution);
+
+            University university = universityRepository.findById(createDTO.getUniversityId()).get();
+            university.getInstitutions().add(savedInstitution.getId());
+
+            universityRepository.save(university);
 
             log.info("Institution created successfully with ID: {}", savedInstitution.getId());
             return entityMapper.toResponseDTO(savedInstitution);

@@ -3,6 +3,7 @@ package com.admission_crm.lead_management.Controller;
 import com.admission_crm.lead_management.Entity.CoreEntities.University;
 import com.admission_crm.lead_management.Exception.InvalidRequestException;
 import com.admission_crm.lead_management.Exception.ResourceNotFoundException;
+import com.admission_crm.lead_management.Payload.Request.UniversityCreateRequest;
 import com.admission_crm.lead_management.Payload.Request.UniversityUpdateRequest;
 import com.admission_crm.lead_management.Payload.Response.ApiResponse;
 import com.admission_crm.lead_management.Payload.Response.UniversityResponseDTO;
@@ -14,7 +15,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,12 +29,9 @@ public class UniversityController {
     private final UniversityService universityService;
 
     @PostMapping
-    public ResponseEntity<?> createUniversity(@Valid @RequestBody University university,
-                                              Authentication authentication) {
+    public ResponseEntity<?> createUniversity(@Valid @RequestBody UniversityCreateRequest universityCreateRequest) {
         try {
-            log.info("REST request to create University: {} by user: {}",
-                    university.getName(), authentication.getName());
-            University createdUniversity = universityService.createUniversity(university);
+            University createdUniversity = universityService.createUniversity(universityCreateRequest);
             return ResponseEntity.status(HttpStatus.CREATED)
                     .body(ApiResponse.success("University created successfully", createdUniversity));
         } catch (InvalidRequestException e) {
@@ -93,11 +90,8 @@ public class UniversityController {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateUniversity(@PathVariable String id,
-                                              @Valid @RequestBody UniversityUpdateRequest universityDetails,
-                                              Authentication authentication) {
+                                              @Valid @RequestBody UniversityUpdateRequest universityDetails) {
         try {
-            log.info("REST request to update University with ID: {} by user: {}",
-                    id, authentication.getName());
             UniversityResponseDTO updatedUniversity = universityService.updateUniversity(id, universityDetails);
             return ResponseEntity.ok(ApiResponse.success("University updated successfully", updatedUniversity));
         } catch (ResourceNotFoundException e) {
@@ -116,11 +110,8 @@ public class UniversityController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteUniversity(@PathVariable String id,
-                                              Authentication authentication) {
+    public ResponseEntity<?> deleteUniversity(@PathVariable String id) {
         try {
-            log.info("REST request to delete University with ID: {} by user: {}",
-                    id, authentication.getName());
             universityService.deleteUniversity(id);
             return ResponseEntity.ok(ApiResponse.success("University deleted successfully", null));
         } catch (ResourceNotFoundException e) {
@@ -149,11 +140,8 @@ public class UniversityController {
 
     @PostMapping("/{universityId}/admins/{adminId}")
     public ResponseEntity<?> addAdmin(@PathVariable String universityId,
-                                      @PathVariable String adminId,
-                                      Authentication authentication) {
+                                      @PathVariable String adminId) {
         try {
-            log.info("REST request to add admin {} to university {} by user: {}",
-                    adminId, universityId, authentication.getName());
             University updatedUniversity = universityService.addAdmin(universityId, adminId);
             return ResponseEntity.ok(ApiResponse.success("Admin added successfully", updatedUniversity));
         } catch (ResourceNotFoundException e) {
@@ -173,11 +161,8 @@ public class UniversityController {
 
     @DeleteMapping("/{universityId}/admins/{adminId}")
     public ResponseEntity<?> removeAdmin(@PathVariable String universityId,
-                                         @PathVariable String adminId,
-                                         Authentication authentication) {
+                                         @PathVariable String adminId) {
         try {
-            log.info("REST request to remove admin {} from university {} by user: {}",
-                    adminId, universityId, authentication.getName());
             University updatedUniversity = universityService.removeAdmin(universityId, adminId);
             return ResponseEntity.ok(ApiResponse.success("Admin removed successfully", updatedUniversity));
         } catch (ResourceNotFoundException e) {
@@ -197,11 +182,8 @@ public class UniversityController {
 
     @DeleteMapping("/{universityId}/institutions/{institutionId}")
     public ResponseEntity<?> removeInstitution(@PathVariable String universityId,
-                                               @PathVariable String institutionId,
-                                               Authentication authentication) {
+                                               @PathVariable String institutionId) {
         try {
-            log.info("REST request to remove institution {} from university {} by user: {}",
-                    institutionId, universityId, authentication.getName());
             UniversityResponseDTO updatedUniversity = universityService.removeInstitution(universityId, institutionId);
             return ResponseEntity.ok(ApiResponse.success("Institution removed successfully", updatedUniversity));
         } catch (ResourceNotFoundException e) {

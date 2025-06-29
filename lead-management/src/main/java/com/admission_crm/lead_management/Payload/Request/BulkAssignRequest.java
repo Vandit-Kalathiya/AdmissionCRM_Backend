@@ -19,22 +19,4 @@ public class BulkAssignRequest {
 
     @NotNull(message = "Counselor ID is required")
     private String counselorId;
-
-    private String reason; // Optional reason for bulk assignment
-
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Builder
-    public static class LeadAssignmentRequest {
-
-        @NotBlank(message = "Lead ID is required")
-        private String leadId;
-
-        @NotBlank(message = "Counselor ID is required")
-        private String counselorId;
-
-        private String notes;
-        private String assignmentReason;
-    }
 }

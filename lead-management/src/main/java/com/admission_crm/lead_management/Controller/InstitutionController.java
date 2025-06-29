@@ -29,11 +29,8 @@ public class InstitutionController {
     private final InstitutionService institutionService;
 
     @PostMapping
-    public ResponseEntity<?> createInstitution(@Valid @RequestBody InstitutionCreateRequest createRequest,
-                                               Authentication authentication) {
+    public ResponseEntity<?> createInstitution(@Valid @RequestBody InstitutionCreateRequest createRequest) {
         try {
-            log.info("REST request to create Institution: {} by user: {}",
-                    createRequest.getName(), authentication.getName());
             InstitutionResponseDTO createdInstitution = institutionService.createInstitution(createRequest);
             return ResponseEntity.status(HttpStatus.CREATED)
                     .body(ApiResponse.success("Institution created successfully", createdInstitution));

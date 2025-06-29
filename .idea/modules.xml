@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Backend.iml" filepath="$PROJECT_DIR$/.idea/Backend.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lead-management/lead-management.iml" filepath="$PROJECT_DIR$/lead-management/lead-management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Admission_CRM_Backend.iml" filepath="$PROJECT_DIR$/.idea/Admission_CRM_Backend.iml" />
     </modules>
   </component>
 </project>

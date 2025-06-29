@@ -3,6 +3,7 @@ package com.admission_crm.lead_management.Service;
 import com.admission_crm.lead_management.Entity.CoreEntities.University;
 import com.admission_crm.lead_management.Exception.InvalidRequestException;
 import com.admission_crm.lead_management.Exception.ResourceNotFoundException;
+import com.admission_crm.lead_management.Payload.Request.UniversityCreateRequest;
 import com.admission_crm.lead_management.Payload.Request.UniversityUpdateRequest;
 import com.admission_crm.lead_management.Payload.Response.UniversityResponseDTO;
 import com.admission_crm.lead_management.Repository.UniversityRepository;
@@ -14,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -24,14 +26,22 @@ public class UniversityService {
 
     private final UniversityRepository universityRepository;
 
-    public University createUniversity(University university) {
+    public University createUniversity(UniversityCreateRequest universityCreateRequest) {
         try {
-            log.info("Creating university: {}", university.getName());
+            log.info("Creating university: {}", universityCreateRequest.getName());
 
             // Validate required fields
-            if (university.getName() == null || university.getName().trim().isEmpty()) {
+            if (universityCreateRequest.getName() == null || universityCreateRequest.getName().trim().isEmpty()) {
                 throw new InvalidRequestException("University name is required");
             }
+
+            University university = new University();
+            university.setName(universityCreateRequest.getName());
+            university.setAddress(universityCreateRequest.getAddress());
+            university.setPhone(universityCreateRequest.getPhone());
+            university.setEmail(universityCreateRequest.getEmail());
+            university.setWebsite(universityCreateRequest.getWebsite());
+            university.setLogoUrl(universityCreateRequest.getLogoUrl());
 
             University savedUniversity = universityRepository.save(university);
             log.info("University created successfully with ID: {}", savedUniversity.getId());
@@ -112,10 +122,7 @@ public class UniversityService {
             University updatedUniversity = universityRepository.save(existingUniversity);
             log.info("University updated successfully with ID: {}", updatedUniversity.getId());
 
-            // Convert to DTO if needed
-            UniversityResponseDTO updatedUniversityDTO = getUniversityResponseDTO(updatedUniversity);
-
-            return updatedUniversityDTO;
+            return getUniversityResponseDTO(updatedUniversity);
 
         } catch (ResourceNotFoundException e) {
             log.error("Error updating university: {}", e.getMessage());
