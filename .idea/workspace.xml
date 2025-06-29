@@ -5,25 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3864f99d-de12-4f94-bff0-f4720c89d3c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Admission_CRM_Backend.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Backend.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-management/src/main/java/com/admission_crm/lead_management/Controller/InstitutionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-management/src/main/java/com/admission_crm/lead_management/Controller/InstitutionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-management/src/main/java/com/admission_crm/lead_management/Controller/UniversityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-management/src/main/java/com/admission_crm/lead_management/Controller/UniversityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-management/src/main/java/com/admission_crm/lead_management/Payload/Request/BulkAssignRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-management/src/main/java/com/admission_crm/lead_management/Payload/Request/BulkAssignRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-management/src/main/java/com/admission_crm/lead_management/Payload/Request/InstitutionCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-management/src/main/java/com/admission_crm/lead_management/Payload/Request/InstitutionCreateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-management/src/main/java/com/admission_crm/lead_management/Payload/Request/InstitutionUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-management/src/main/java/com/admission_crm/lead_management/Payload/Request/InstitutionUpdateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-management/src/main/java/com/admission_crm/lead_management/Payload/Request/UniversityCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-management/src/main/java/com/admission_crm/lead_management/Payload/Request/UniversityCreateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-management/src/main/java/com/admission_crm/lead_management/Payload/Request/UniversityUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-management/src/main/java/com/admission_crm/lead_management/Payload/Request/UniversityUpdateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-management/src/main/java/com/admission_crm/lead_management/Service/InstitutionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-management/src/main/java/com/admission_crm/lead_management/Service/InstitutionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-management/src/main/java/com/admission_crm/lead_management/Service/UniversityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-management/src/main/java/com/admission_crm/lead_management/Service/UniversityService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +30,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -113,7 +96,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1751186210531</updated>
-      <workItem from="1751186213020" duration="472000" />
+      <workItem from="1751186213020" duration="859000" />
     </task>
     <servers />
   </component>
