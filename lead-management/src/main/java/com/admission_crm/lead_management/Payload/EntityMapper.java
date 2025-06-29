@@ -24,13 +24,8 @@ public class EntityMapper {
         institution.setWebsite(dto.getWebsite());
         institution.setLogoUrl(dto.getLogoUrl());
         institution.setUniversityId(dto.getUniversityId());
-        institution.setMaxCounselors(dto.getMaxCounselors() != null ? dto.getMaxCounselors() : 5);
         institution.setCurrentCounselors(0);
         institution.setIsActive(true);
-
-        if (dto.getInstituteAdmin() != null) {
-            institution.setInstituteAdmin(dto.getInstituteAdmin());
-        }
 
         return institution;
     }
@@ -103,10 +98,6 @@ public class EntityMapper {
         university.setEmail(dto.getEmail());
         university.setWebsite(dto.getWebsite());
         university.setLogoUrl(dto.getLogoUrl());
-
-        if (dto.getAdmins() != null) {
-            university.setAdmins(dto.getAdmins());
-        }
 
         return university;
     }

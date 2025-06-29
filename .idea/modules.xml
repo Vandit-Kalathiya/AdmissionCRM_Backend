@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Admission_CRM_Backend.iml" filepath="$PROJECT_DIR$/.idea/Admission_CRM_Backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/authentication-service/authentication-service.iml" filepath="$PROJECT_DIR$/authentication-service/authentication-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka_server/eureka_service.iml" filepath="$PROJECT_DIR$/eureka_server/eureka_service.iml" />
     </modules>
   </component>
 </project>
